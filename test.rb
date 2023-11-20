@@ -1,38 +1,15 @@
-def factorial(n)
-  if n == 0 || n == 1
-    return 1
-  else
-    return n * factorial(n - 1)
-  end
+def calculate_marks(subjects)
+  total_marks = subjects.reduce(:+)
+  average_marks = total_marks / subjects.length.to_f
+  return total_marks, average_marks
 end
 
-def fibonacci(n)
-  if n <= 1
-    return n
-  else
-    return fibonacci(n - 1) + fibonacci(n - 2)
-  end
+def display_results(total_marks, average_marks)
+  puts "Total Marks: #{total_marks}"
+  puts "Average Marks: #{average_marks}"
 end
 
-def greet(name)
-  puts "Hello, #{name}!"
-end
 
-def main
-  print "Enter your name: "
-  user_name = gets.chomp
-  greet(user_name)
-
-  print "Enter a number to calculate its factorial: "
-  num_factorial = gets.chomp.to_i
-  puts "Factorial of #{num_factorial} is #{factorial(num_factorial)}"
-
-  print "Enter a number for Fibonacci sequence: "
-  num_fibonacci = gets.chomp.to_i
-  puts "Fibonacci sequence up to #{num_fibonacci} terms: "
-  (0..num_fibonacci - 1).each { |i| print "#{fibonacci(i)} " }
-  puts
-end
-
-# Run the main function
-main
+subjects = [75, 88, 92, 60, 78]
+total_marks, average_marks = calculate_marks(subjects)
+display_results(total_marks, average_marks)
